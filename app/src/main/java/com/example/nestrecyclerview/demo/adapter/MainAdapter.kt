@@ -105,7 +105,7 @@ class MainAdapter : BaseMultiItemQuickAdapter<MainListBean, BaseViewHolder>(null
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if (getLastVisibleItem(recyclerView) >= getTotalItemCount(recyclerView) - 8)
+                    if (getLastVisibleItem(recyclerView) >= getTotalItemCount(recyclerView) - 1)
                         onChildScrollEndListener?.invoke(
                             recyclerView as NestChildRecyclerView,
                             newState
