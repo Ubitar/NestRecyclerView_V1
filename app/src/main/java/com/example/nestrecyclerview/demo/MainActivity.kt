@@ -2,24 +2,25 @@ package com.example.nestrecyclerview.demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.blankj.utilcode.util.ToastUtils
 import com.example.nestrecyclerview.demo.adapter.MainAdapter
 import com.example.nestrecyclerview.demo.adapter.SubAdapter
 import com.example.nestrecyclerview.demo.adapter.TabAdapter
 import com.example.nestrecyclerview.demo.bean.MainListBean
 import com.example.nestrecyclerview.demo.bean.MainTabBean
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.nestrecyclerview.demo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mainAdapter: MainAdapter
     private lateinit var tabAdapter: TabAdapter
     private lateinit var subAdapters: MutableList<SubAdapter>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initRecyclerView()
         loadData()
         initEvent()
@@ -28,9 +29,9 @@ class MainActivity : AppCompatActivity() {
     /**  初始化列表 */
     private fun initRecyclerView() {
         mainAdapter = MainAdapter()
-        recyclerView.itemAnimator = null
-//        recyclerView.setPreLoadHeight(200)   //px单位,设置RY预加载不可见（屏幕外）距离的视图，默认是一个RY的高度
-        recyclerView.adapter = mainAdapter
+        binding.recyclerView.itemAnimator = null
+//        binding.recyclerView.setPreLoadHeight(200)   //px单位,设置RY预加载不可见（屏幕外）距离的视图，默认是一个RY的高度
+        binding.recyclerView.adapter = mainAdapter
     }
 
     /** 加载数据 */
